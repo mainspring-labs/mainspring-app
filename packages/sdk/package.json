@@ -1,7 +1,7 @@
 {
   "name": "@mainspring-labs/sdk",
   "version": "0.1.0",
-  "description": "Typed reads for Mainspring springs, factories and fleet instances on Stellar.",
+  "description": "TypeScript SDK for Mainspring: read spring, factory and instance state, resolve CAP-85 executable references, and decode upgrade events.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",

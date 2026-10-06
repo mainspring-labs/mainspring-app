@@ -1,7 +1,7 @@
 <h1 align="center">Mainspring App</h1>
 
 <p align="center">
-  Who can change this contract's code, what upgrade is pending, and how long do I have to opt out?
+  Upgrade monitoring for Soroban contract fleets on Stellar.
 </p>
 
 <p align="center">
@@ -13,12 +13,22 @@
 
 ---
 
-[Mainspring contracts](https://github.com/mainspring-labs/mainspring-contracts) let one Stellar contract (a *spring*) control the code of a whole fleet of contracts through a CAP-85 executable reference. Upgrades wait out a timelock, and any instance owner can `pin` their instance to opt out before the upgrade lands.
+Mainspring App is the monitoring layer for [Mainspring](https://github.com/mainspring-labs/mainspring-contracts). It lets operators, integrators and contract holders see who controls a contract's code and what changes are scheduled.
 
-That opt-out only helps if people know an upgrade is coming. This repo is the reading side:
+Since Protocol 28, a Soroban contract can run code held by another contract through a CAP-85 executable reference. Mainspring's spring contract governs that code with a timelock, and the owner of each contract can opt out of a scheduled upgrade by pinning it. Mainspring App makes that state visible.
 
-- **`@mainspring-labs/sdk`** gives typed reads of springs, factories and instances. It tells you whether a contract follows a fleet or runs fixed code, and it decodes and scans every Mainspring event.
-- **`mainspring` CLI** prints fleet reports and per-instance pin advice, and `watch` streams fleet events with alerts on proposals.
+**For any contract**, it reports where the code comes from, which contract controls it, and whether an upgrade is scheduled. When one is, it shows the time remaining to opt out.
+
+**For a fleet**, it lists every instance, separates instances that follow the shared code from those pinned to a fixed version, and reports the timelock, the current and previous code, and the version history.
+
+**Over time**, it streams every upgrade event (proposals, executions, cancellations, rollbacks, pins and new deployments) so teams and holders can act before a change takes effect.
+
+The repo contains two packages:
+
+| Package | Purpose |
+|---|---|
+| [`@mainspring-labs/sdk`](packages/sdk) | TypeScript library for reading springs, factories and instances, resolving CAP-85 references, and decoding and scanning Mainspring events |
+| [`mainspring`](apps/cli) | Command-line tool for fleet reports, per-contract upgrade status and live event monitoring |
 
 ## Try it on testnet
 

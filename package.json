@@ -1,7 +1,7 @@
 {
   "name": "mainspring-app",
   "private": true,
-  "description": "SDK and CLI for watching Mainspring fleets on Stellar: who can change a contract's code, what is pending, and when.",
+  "description": "Upgrade monitoring for Soroban contract fleets on Stellar: SDK and CLI for Mainspring.",
   "license": "Apache-2.0",
   "packageManager": "pnpm@11.24.0",
   "engines": {
